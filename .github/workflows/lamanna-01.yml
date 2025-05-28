@@ -4,11 +4,13 @@ on:
 jobs:
   installa:
     runs-on: ubuntu-latest
-    - uses: actions/setup-python@v5
-      with:
-        python-version: '3.12.7'
-    - run: pip install -r /requirements.txt
-  run:
+    steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.7'
+      - run: pip install -r /requirements.txt
+  esecuzione:
     runs-on: ubuntu-latest
-    - run: x
-      working-diretory: ./lamanna
+    steps:
+      - run: model.py
+        working-diretory: ./lamanna
