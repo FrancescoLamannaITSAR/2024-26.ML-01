@@ -15,14 +15,13 @@ jobs:
       - run: python -m pip install --upgrade pip
       - run: pip install -r requirements.txt
         working-directory: lamanna
-      - run: model.py
-        working-directory: lamanna
-  esecuzione:
+  esegui:
+    needs: installa
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
           sparse-checkout: |
             lamanna
-      - run: model.py
+      - run: python model.py
         working-directory: lamanna
