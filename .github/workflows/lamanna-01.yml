@@ -13,6 +13,7 @@ jobs:
         with:
           python-version: '3.12.7'
           cache: 'pip'
+        working-directory: lamanna
       - run: python -m pip install --upgrade pip
       - run: pip install -r requirements.txt
         working-directory: lamanna
@@ -30,5 +31,6 @@ jobs:
         with:
           python-version: '3.12.7'
           cache: 'pip'
+        working-directory: lamanna
       - run: python model.py
         working-directory: lamanna
