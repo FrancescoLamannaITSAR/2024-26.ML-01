@@ -47,9 +47,9 @@ pipe = Pipeline([
 ])
 
 params = {
-    'regressor__n_estimators' : [1, 10, 30],
+    'regressor__n_estimators' : [1, 10],
     'regressor__criterion': ['squared_error'],
-    'encoder__onehot__min_frequency': [1, 4, 7]
+    'encoder__onehot__min_frequency': [1, 3]
 }
 
 grid_seach = GridSearchCV(
@@ -67,14 +67,14 @@ grid_seach.fit(x_train, y_train)
 mae = mean_absolute_error(y_test, grid_seach.predict(x_test))
 mape = mean_absolute_percentage_error(y_test, grid_seach.predict(x_test))
 print(mae)
-print(f"errore medio assoluto: {(mae*100).round(1)}%")
+print(f"errore medio assoluto: {(mae*100)}%")
 print(mape)
-print(f"errore medio percentuale assoluto: {(mape*100).round(1)}%")
+print(f"errore medio percentuale assoluto: {(mape*100)}%")
 
-df_prediction = pd.read_csv('data/predict.csv')
+df_prediction = pd.read_csv('predict.csv')
 x_prediction = df_prediction[['release_date', 'publisher', 'median_playtime', 'price', 'Genre: Action', 'Genre: Adventure', 'Genre: Casual', 'Genre: Early Access', 'Genre: Free to Play', 'Genre: Indie', 'Genre: Massively Multiplayer', 'Genre: RPG', 'Genre: Racing', 'Genre: Simulation', 'Genre: Sports', 'Genre: Strategy']]
 y_prediction = grid_seach.predict(x_prediction)
 
-df_prediction['pos_perc'] = (df_prediction['pos_perc'].astype(float) * 100).round(2)
-df_prediction['predicted_pos_perc'] = (y_prediction*100).round(2)
+df_prediction['pos_perc'] = (df_prediction['pos_perc'].astype(float) * 100)
+df_prediction['predicted_pos_perc'] = (y_prediction*100)
 print(df_prediction[['name', 'predicted_pos_perc', 'pos_perc']])
