@@ -1,0 +1,8 @@
+name: nomeAction
+on: 
+  push:
+jobs:
+  nomeJob:
+    runs-on: ubuntu-latest
+    steps:
+      - echo "mhanz"
