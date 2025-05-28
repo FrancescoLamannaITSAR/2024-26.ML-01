@@ -5,4 +5,5 @@ jobs:
   nomeJob:
     runs-on: ubuntu-latest
     steps:
-      - echo "mhanz"
+      - run: echo "mhanz"
+      - run: echo "sudiscio"
