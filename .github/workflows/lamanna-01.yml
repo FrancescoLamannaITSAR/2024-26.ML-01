@@ -22,7 +22,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: my-artifact
-          path: world.txt
+          path: artifact.txt
   esegui:
     needs: installa
     runs-on: ubuntu-latest
