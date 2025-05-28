@@ -1,9 +1,13 @@
-name: nomeAction
+name: infos
 on: 
   push:
 jobs:
-  nomeJob:
+  versione:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "mhanz"
-      - run: echo "sudiscio"
+      - run: python --version
+      - run: pip --version
+  librerie:
+    runs-on: ubuntu-latest
+    steps:
+      - run: pip list
