@@ -17,12 +17,6 @@ jobs:
       - run: python -m pip install --upgrade pip
       - run: pip install -r requirements.txt
         working-directory: lamanna
-      - run: python model.py
-        working-directory: lamanna
-      - uses: actions/upload-artifact@v4
-        with:
-          name: my-artifact
-          path: artifact.txt
   esegui:
     needs: installa
     runs-on: ubuntu-latest
@@ -40,3 +34,7 @@ jobs:
         working-directory: lamanna
       - run: python model.py
         working-directory: lamanna
+      - uses: actions/upload-artifact@v4
+        with:
+          name: artifact
+          path: artifact.txt
