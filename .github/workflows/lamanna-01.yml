@@ -2,7 +2,7 @@ name: model automation
 on: 
   push:
 jobs:
-  install:
+  installa:
     runs-on: ubuntu-latest
     - uses: actions/setup-python@v5
       with:
