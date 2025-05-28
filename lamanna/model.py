@@ -56,7 +56,7 @@ grid_seach = GridSearchCV(
     estimator=pipe,
     param_grid=params,
     scoring=make_scorer(mean_absolute_error, greater_is_better=False),
-    #n_jobs=-1,
+    n_jobs=-1,
     cv=KFold(n_splits=5, shuffle=True, random_state=42),
     refit=True,
     verbose=4
