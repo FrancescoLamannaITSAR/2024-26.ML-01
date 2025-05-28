@@ -2,8 +2,13 @@ name: model automation
 on: 
   push:
 jobs:
-  versione:
+  install:
     runs-on: ubuntu-latest
-    steps:
-      - run: python --version
-      - run: pip --version
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.12.7'
+    - run: pip install -r /requirements.txt
+  run:
+    runs-on: ubuntu-latest
+    - run: x
+      working-diretory: ./lamanna
