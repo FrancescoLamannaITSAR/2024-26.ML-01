@@ -1,0 +1,9 @@
+name: model automation
+on: 
+  push:
+jobs:
+  versione:
+    runs-on: ubuntu-latest
+    steps:
+      - run: python --version
+      - run: pip --version

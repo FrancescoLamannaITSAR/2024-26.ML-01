@@ -1,8 +1,8 @@
-name: infos
+name: infos     #nome
 on: 
   push:
 jobs:
-  versione:
+  versione:     #nome Job
     runs-on: ubuntu-latest
     steps:
       - run: python --version
@@ -11,3 +11,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: pip list
+  filteros:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            lamanna
