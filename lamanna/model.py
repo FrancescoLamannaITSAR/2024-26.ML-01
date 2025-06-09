@@ -1,5 +1,8 @@
+import os
+import pickle
 import pandas as pd
 import sklearn
+
 from sklearn.compose import ColumnTransformer
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import make_scorer, mean_absolute_error, mean_absolute_percentage_error
@@ -78,3 +81,14 @@ y_prediction = grid_seach.predict(x_prediction)
 df_prediction['pos_perc'] = (df_prediction['pos_perc'].astype(float) * 100)
 df_prediction['predicted_pos_perc'] = (y_prediction*100)
 print(df_prediction[['name', 'predicted_pos_perc', 'pos_perc']])
+
+os.makedirs("bilotta", exist_ok=True)
+
+model_path = "lamanna/model.pkl"
+
+if not os.path.exists(model_path):
+    with open(model_path, "wb") as f:
+        pickle.dump(grid_seach, f)
+    print(f"Modello salvato in {model_path}")
+else:
+    print(f"Il file {model_path} esiste già, non è stato sovrascritto.")
