@@ -3,7 +3,28 @@ from app import app as flask_app
 
 #CONSUMER
 
-to_predict_CSV = "name,pos_perc,release_date,publisher,median_playtime,price,Genre: Action,Genre: Adventure,Genre: Casual,Genre: Early Access,Genre: Free to Play,Genre: Indie,Genre: Massively Multiplayer,Genre: RPG,Genre: Racing,Genre: Simulation,Genre: Sports,Genre: Strategy\nClair Obscur: Expedition 33,0.952213,2025.0424,Annapurna Interactive,60,49.99,1,0,0,0,0,1,0,1,0,0,0,0"
+domanda = {
+  "name": "Clair Obscur: Expedition 33",
+  "pos_perc": 0.952213,
+  "release_date": 2025.0424,
+  "publisher": "Annapurna Interactive",
+  "median_playtime": 60,
+  "price": 49.99,
+  "Genre": {
+    "Action": 1,
+    "Adventure": 0,
+    "Casual": 0,
+    "Early Access": 0,
+    "Free to Play": 0,
+    "Indie": 1,
+    "Massively Multiplayer": 0,
+    "RPG": 1,
+    "Racing": 0,
+    "Simulation": 0,
+    "Sports": 0,
+    "Strategy": 0
+  }
+}
 
 @pytest.fixture()
 def client():
@@ -12,7 +33,7 @@ def client():
         yield client
 
 def test_hello(client):
-    response = client.post("/infer", json={"name": "Alessandro"})
+    response = client.post("/infer", jso=domanda)
     assert response.status_code == 200
     data = response.get_json()
     assert data == {"message": "Hello Alessandro!"}

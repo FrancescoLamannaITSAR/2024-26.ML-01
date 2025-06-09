@@ -82,7 +82,7 @@ df_prediction['pos_perc'] = (df_prediction['pos_perc'].astype(float) * 100)
 df_prediction['predicted_pos_perc'] = (y_prediction*100)
 print(df_prediction[['name', 'predicted_pos_perc', 'pos_perc']])
 
-os.makedirs("bilotta", exist_ok=True)
+os.makedirs("lamanna", exist_ok=True)
 
 model_path = "lamanna/model.pkl"
 
