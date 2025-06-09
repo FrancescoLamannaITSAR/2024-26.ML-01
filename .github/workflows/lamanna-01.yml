@@ -36,5 +36,5 @@ jobs:
         working-directory: lamanna
       - uses: actions/upload-artifact@v4
         with:
-          name: artifact
-          path: lamanna/artifact.pkl
+          name: model
+          path: lamanna/model.pkl
