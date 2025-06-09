@@ -12,6 +12,8 @@ from sklearn.preprocessing import StandardScaler, OneHotEncoder, TargetEncoder, 
 
 sklearn.set_config(transform_output='pandas')
 
+print(pickle.format_version)
+
 #dataset e dati
 df = pd.read_csv('steam.csv')
 df.dropna(axis=0, inplace=True)
