@@ -1,14 +1,19 @@
 from flask import Flask, request, jsonify
 import pickle
-import numpy as np
+import pandas as pd
 app = Flask(__name__)
 
-with open("lamanna/model.pkl", "rb") as f:
-    model = pickle.load(f)
 
 @app.route('/infer', methods=['POST'])
 def infer():
+
+    print('####################################à S1')
+    with open("model.pkl", "rb") as f:
+        model = pickle.load(f)
+
     data = request.get_json()
+
+    print('####################################à S2')
 
     try:
         features = [
@@ -32,12 +37,16 @@ def infer():
     except KeyError as e:
         return jsonify({"error": f"Missing key: {e}"}), 400
 
-    X = np.array([features])
-    prediction = model.predict(X)[0]
+    
+    print('####################################à S3', features)
+    X = pd.DataFrame([features], columns=['release_date', 'publisher', 'median_playtime', 'price', 'Genre: Action', 'Genre: Adventure', 'Genre: Casual', 'Genre: Early Access', 'Genre: Free to Play', 'Genre: Indie', 'Genre: Massively Multiplayer', 'Genre: RPG', 'Genre: Racing', 'Genre: Simulation', 'Genre: Sports', 'Genre: Strategy'])
+    print('####################################à S4', X)
+    prediction = model.predict(X)
+    print ("########################", prediction)
     # Costruisci risposta
     response_data = {
         'result': {
-            'value': prediction
+            'value': float(prediction)
         }
     }
     return jsonify(response_data)

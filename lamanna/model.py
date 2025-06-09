@@ -76,6 +76,7 @@ print(f"errore medio percentuale assoluto: {(mape*100)}%")
 
 df_prediction = pd.read_csv('predict.csv')
 x_prediction = df_prediction[['release_date', 'publisher', 'median_playtime', 'price', 'Genre: Action', 'Genre: Adventure', 'Genre: Casual', 'Genre: Early Access', 'Genre: Free to Play', 'Genre: Indie', 'Genre: Massively Multiplayer', 'Genre: RPG', 'Genre: Racing', 'Genre: Simulation', 'Genre: Sports', 'Genre: Strategy']]
+print("###############################################", x_prediction)
 y_prediction = grid_seach.predict(x_prediction)
 
 df_prediction['pos_perc'] = (df_prediction['pos_perc'].astype(float) * 100)
