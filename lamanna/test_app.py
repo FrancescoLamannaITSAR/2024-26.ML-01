@@ -1,30 +1,6 @@
 import pytest
 from app import app as flask_app
 
-#CONSUMER
-
-domanda = {
-  "name": "Clair Obscur: Expedition 33",
-  "pos_perc": 0.952213,
-  "release_date": 2025.0424,
-  "publisher": "Annapurna Interactive",
-  "median_playtime": 60,
-  "price": 49.99,
-  "Genre": {
-    "Action": 1,
-    "Adventure": 0,
-    "Casual": 0,
-    "Early Access": 0,
-    "Free to Play": 0,
-    "Indie": 1,
-    "Massively Multiplayer": 0,
-    "RPG": 1,
-    "Racing": 0,
-    "Simulation": 0,
-    "Sports": 0,
-    "Strategy": 0
-  }
-}
 
 @pytest.fixture()
 def client():
@@ -33,6 +9,28 @@ def client():
         yield client
 
 def test_model(client):
+    domanda = {
+        "name": "Clair Obscur: Expedition 33",
+        "pos_perc": 0.952213,
+        "release_date": 2025.0424,
+        "publisher": "Annapurna Interactive",
+        "median_playtime": 60,
+        "price": 49.99,
+        "Genre": {
+            "Action": 1,
+            "Adventure": 0,
+            "Casual": 0,
+            "Early Access": 0,
+            "Free to Play": 0,
+            "Indie": 1,
+            "Massively Multiplayer": 0,
+            "RPG": 1,
+            "Racing": 0,
+            "Simulation": 0,
+            "Sports": 0,
+            "Strategy": 0
+        }
+    }
     response = client.post("/infer", json=domanda)
     assert response.status_code == 200
     data = response.get_json()
