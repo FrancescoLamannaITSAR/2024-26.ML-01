@@ -2,7 +2,7 @@ from flask import flask, request, jsonify
 
 app = flask(__name__)
 
-df_prediction = pd.read_csv('predict.csv')
+
 
 @app.route('/infer', methods=('POST'))
 def hello():

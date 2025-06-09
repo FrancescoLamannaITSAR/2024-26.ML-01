@@ -32,7 +32,7 @@ def client():
     with flask_app.test_client() as client:
         yield client
 
-def test_hello(client):
+def test_model(client):
     response = client.post("/infer", jso=domanda)
     assert response.status_code == 200
     data = response.get_json()

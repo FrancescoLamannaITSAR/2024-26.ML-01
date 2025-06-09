@@ -84,7 +84,7 @@ print(df_prediction[['name', 'predicted_pos_perc', 'pos_perc']])
 
 os.makedirs("lamanna", exist_ok=True)
 
-model_path = "lamanna/model.pkl"
+model_path = "model.pkl"
 
 if not os.path.exists(model_path):
     with open(model_path, "wb") as f:
