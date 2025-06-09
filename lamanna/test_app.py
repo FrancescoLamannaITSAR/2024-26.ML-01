@@ -36,4 +36,5 @@ def test_hello(client):
     response = client.post("/infer", jso=domanda)
     assert response.status_code == 200
     data = response.get_json()
+    print (data)
     assert data == {"message": "Hello Alessandro!"}
