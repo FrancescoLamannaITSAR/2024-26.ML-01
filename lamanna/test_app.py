@@ -33,7 +33,7 @@ def client():
         yield client
 
 def test_model(client):
-    response = client.post("/infer", jso=domanda)
+    response = client.post("/infer", json=domanda)
     assert response.status_code == 200
     data = response.get_json()
     print (data)
